@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+    int hour, mins, secs;
+    int delay=1000;
+    printf("Set Time: \n");
+    scanf("%d%d%d", &hour, &mins, &secs);
+
+    if(hour>12 || mins>60 || secs>60)
+    {
+        printf("Error!\n");
+        exit(0);
+    }
+    while(1)
+    {
+        secs++;
+        if(secs>59){
+            mins++;
+            secs=0;
+        }
+        if(mins>59){
+            hour++;
+            mins=0;
+        }
+        if(hour>12){
+            hour=1;
+        }
+        printf("\nClock:");
+        printf("\n%02d:%02d:%02d", hour, mins, secs);
+        sleep(delay);
+    }
+    return 0;
+}
